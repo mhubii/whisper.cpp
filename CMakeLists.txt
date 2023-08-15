@@ -307,7 +307,8 @@ if (WHISPER_COREML)
     include(DefaultTargetOptions)
 
     target_include_directories(${TARGET} PUBLIC
-        .
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:.>
         )
 
     target_link_libraries(${TARGET} PRIVATE ${FOUNDATION_FRAMEWORK} ${COREML_FRAMEWORK})
@@ -326,7 +327,8 @@ if (WHISPER_OPENVINO)
         )
 
     target_include_directories(${TARGET} PUBLIC
-        .
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:.>
         )
 
     set_property(TARGET ${TARGET} PROPERTY POSITION_INDEPENDENT_CODE ON)
@@ -353,7 +355,8 @@ add_library(${TARGET}
 include(DefaultTargetOptions)
 
 target_include_directories(${TARGET} PUBLIC
-    .
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<INSTALL_INTERFACE:.>
     )
 
 if (WHISPER_COREML)
